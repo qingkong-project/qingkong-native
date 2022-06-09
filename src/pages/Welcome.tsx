@@ -1,6 +1,6 @@
 const Welcome = ()=>{
 
-    return <div>asfas</div>
+    return <div>hi</div>
 }
 
 export default Welcome

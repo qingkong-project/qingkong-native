@@ -3,7 +3,7 @@ import Welcome from '../pages/Welcome'
 
 export default [
   {
-    path: '/welcome',
+    path: '/',
     element: <Welcome />,
   },
 ]
