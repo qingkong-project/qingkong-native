@@ -1,13 +1,11 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import App from "./App";
-// import 'antd/dist/antd.min.css'
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import App from './App'
+import './index.css'
+import { BrowserRouter } from 'react-router-dom'
 
-import { HashRouter } from "react-router-dom";
-
-ReactDOM.render(
-  <HashRouter>
+ReactDOM.createRoot(document.getElementById('root')!).render(
+  <BrowserRouter>
     <App />
-  </HashRouter>,
-  document.getElementById("root"),
-);
+  </BrowserRouter>
+)
