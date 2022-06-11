@@ -2,6 +2,7 @@ const express = require('express')
 const history = require('connect-history-api-fallback')
 const { createProxyMiddleware } = require('http-proxy-middleware')
 const proxy = require('./config/proxy')
+const app = express()
 
 // 读取机器环境配置代理
 // 发布到captain上，机器内脚本会给package.json加上 port 和 env，环境枚举为 FAT LPT FWS UAT PROD
@@ -20,7 +21,7 @@ for (const proxyKey in proxy[env]) {
     )
 }
 
-const app = express()
+
 app.use(history()) // 这里千万要注意，要在static静态资源上面
 app.use(express.static('dist'))
 
