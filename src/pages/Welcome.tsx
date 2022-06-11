@@ -8,7 +8,7 @@ const Welcome = () => {
 
   useMount(() => {
 
-    axios.post('http://localhost:8080/listNote').then(res=>{
+    axios.post('/api/listNote').then(res=>{
       console.log(res)
 
       setRows(res)

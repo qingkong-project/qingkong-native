@@ -36,7 +36,7 @@ const Publish = () => {
     <>
             <Form
                 onFinish={(val) => {
-                    axios.post('http://localhost:8080/createANote', val).then((res:any) => {
+                    axios.post('/api/createANote', val).then((res:any) => {
 
                         const label = res.generatedMaps[0].id
 
