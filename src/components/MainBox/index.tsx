@@ -1,54 +1,50 @@
-import { Badge, TabBar } from 'antd-mobile'
+import { Badge, TabBar } from "antd-mobile";
 
 import {
-    AppOutline,
-    MessageOutline,
-    MessageFill,
-    UnorderedListOutline,
-    UserOutline,
-} from 'antd-mobile-icons'
-import './index.less'
-import {Outlet, useLocation, useNavigate} from "react-router-dom";
-const MainBox = ()=>{
+  AppOutline,
+  MessageOutline,
+  MessageFill,
+  UnorderedListOutline,
+  UserOutline,
+} from "antd-mobile-icons";
+import "./index.less";
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
+const MainBox = () => {
+  const tabs = [
+    {
+      key: "home",
+      title: "首页",
+      icon: <AppOutline />,
+      badge: Badge.dot,
+    },
+    {
+      key: "welcome",
+      title: "welcome",
+      icon: <UnorderedListOutline />,
+      badge: "5",
+    },
+    {
+      key: "publish",
+      title: "publish",
+      icon: (active: boolean) => active ? <MessageFill /> : <MessageOutline />,
+      badge: "99+",
+    },
+    {
+      key: "me",
+      title: "个人中心",
+      icon: <UserOutline />,
+    },
+  ];
 
-    const tabs = [
-        {
-            key: 'home',
-            title: '首页',
-            icon: <AppOutline />,
-            badge: Badge.dot,
-        },
-        {
-            key: 'welcome',
-            title: '我的待办',
-            icon: <UnorderedListOutline />,
-            badge: '5',
-        },
-        {
-            key: 'message',
-            title: '我的消息',
-            icon: (active: boolean) =>
-                active ? <MessageFill /> : <MessageOutline />,
-            badge: '99+',
-        },
-        {
-            key: 'personalCenter',
-            title: '个人中心',
-            icon: <UserOutline />,
-        },
-    ]
+  const history = useNavigate();
+  const location = useLocation();
+  const { pathname } = location;
 
+  const setRouteActive = (value: string) => {
+    history(value);
+  };
 
-    const history = useNavigate()
-    const location = useLocation()
-    const { pathname } = location
-
-    const setRouteActive = (value: string) => {
-        history(value)
-    }
-
-
-    return <div id={'main-box'}>
+  return <div id={'main-box'}>
         {/*<p>{pathname}</p>*/}
         <Outlet />
 
@@ -61,7 +57,7 @@ const MainBox = ()=>{
             </TabBar>
         </div>
 
-    </div>
-}
+    </div>;
+};
 
-export default MainBox
+export default MainBox;

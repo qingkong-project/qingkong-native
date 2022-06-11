@@ -1,24 +1,21 @@
-import {useState} from "react";
-import {useMount} from 'ahooks'
-import './index.less'
+import { useState } from "react";
+import { useMount } from "ahooks";
+import "./index.less";
+// import axios from "axios";
+import axios from "../utils/request";
+const Welcome = () => {
+  const [row, setRows] = useState<any>([]);
 
-const Welcome = ()=>{
+  useMount(() => {
 
-    const [row,setRows] = useState<any>([])
+    axios.post('http://localhost:8080/listNote').then(res=>{
+      console.log(res)
 
-
-
-    useMount(()=>{
-        const arr = []
-        for (let i = 0; i < 20; i++) {
-            arr.push({
-                height:Math.random()*50 + 100 + 'px',
-                bgc:`rgb(${Math.random()*250},${Math.random()*250},${Math.random()*250})`
-            })
-        }
-        setRows(arr)
+      setRows(res)
     })
-    return <div>
+
+  },);
+  return <div>
 
         {/*{JSON.stringify(row)}*/}
 
@@ -28,11 +25,12 @@ const Welcome = ()=>{
                 row.map((i:any,index:any)=>{
 
 
-                    return <div style={{backgroundColor:i.bgc}} key={index}>
-                        <img className={'tupian'} src="http://public-api.rico.org.cn/a8acdb1d-7317-4d0b-80b2-5ce722e76d2c.jpeg" alt=""/>
+                    return <div key={index}>
+                        <img className={'tupian'} src={i.url} alt=""/>
                         <div>
-                            <p>asfasfas</p>
-                            <p>asfasfassafsaf</p>
+                          <img style={{borderRadius:'50%',width:'20px'}} src="https://sns-avatar-qc.xhscdn.com/avatar/5f6045dfdb055200011e7ed4.jpg?imageView2/2/w/80/format/jpg" alt=""/>
+                            <p>{i.title}</p>
+                          <p>{i.reference}</p>
                         </div>
                     </div>
                 })
@@ -40,7 +38,7 @@ const Welcome = ()=>{
         </div>
 
 
-    </div>
-}
+    </div>;
+};
 
-export default Welcome
+export default Welcome;
