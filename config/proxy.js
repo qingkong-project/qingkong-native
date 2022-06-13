@@ -9,7 +9,7 @@ module.exports = {
   },
   PROD: {
     '/api': {
-      target: 'http://devs-fltmj.flight.ctripcorp.com',
+      target: 'http://qingkong-v2.rico.org.cn',
       changeOrigin: true,
       pathRewrite: { '/api': '/' },
     }
